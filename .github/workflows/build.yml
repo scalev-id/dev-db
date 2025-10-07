@@ -59,14 +59,19 @@ jobs:
 
           PACKAGE_NAME=$(echo "$REPO_NAME" | tr '[:upper:]' '[:lower:]')
 
+          echo "ORG_NAME: ${ORG_NAME}"
+          echo "REPO_NAME: ${REPO_NAME}"
+          echo "PACKAGE_NAME: ${PACKAGE_NAME}"
+
+          PACKAGE_NAME=dev-"db:latest"
+
           echo "Setting visibility for package: ${PACKAGE_NAME} in org: ${ORG_NAME}"
 
-          # Set visibility to public
-          gh api \
-            --method PATCH \
+          curl -X PATCH \
             -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            "/orgs/${ORG_NAME}/packages/container/${PACKAGE_NAME}/visibility" \
-            -f visibility='public'
+            "https://api.github.com/orgs/${ORG_NAME}/packages/container/${PACKAGE_NAME}/visibility" \
+            -d '{"visibility":"public"}'
 
           echo "Package visibility set to public successfully!"
