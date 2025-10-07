@@ -63,8 +63,6 @@ jobs:
           echo "REPO_NAME: ${REPO_NAME}"
           echo "PACKAGE_NAME: ${PACKAGE_NAME}"
 
-          PACKAGE_NAME=dev-"db:latest"
-
           echo "Setting visibility for package: ${PACKAGE_NAME} in org: ${ORG_NAME}"
 
           curl -X PATCH \
