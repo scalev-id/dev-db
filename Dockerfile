@@ -1,6 +1,6 @@
 FROM postgres:16.8
 
-ENV PARTMAN_VERSION=4.7.4
+ENV PARTMAN_VERSION=5.2.4
 
 # Install build dependencies
 RUN apt-get update && apt-get install -y \
