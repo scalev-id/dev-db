@@ -2,6 +2,8 @@ FROM postgres:16.8
 
 ENV PARTMAN_VERSION=5.2.4
 
+LABEL org.opencontainers.image.authors="tech@scalev.id"
+
 # Install build dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
